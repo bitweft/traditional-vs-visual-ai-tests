@@ -1,7 +1,12 @@
 package com.applitools.hackathon;
 
 import com.applitools.hackathon.pages.LoginPage;
+import com.tngtech.java.junit.dataprovider.DataProvider;
+import com.tngtech.java.junit.dataprovider.DataProviderRunner;
+import com.tngtech.java.junit.dataprovider.UseDataProvider;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,12 +14,17 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+@RunWith(DataProviderRunner.class)
 public class TraditionalTests extends BaseTest {
 
+    @Before
+    public void launchLoginPage() {
+        driver.get("https://demo.applitools.com/hackathon.html");
+    }
 
     @Test
     public void shouldDisplayLoginPageInformationCorrectly() {
-        driver.get("https://demo.applitools.com/hackathon.html");
+
         LoginPage loginPage = new LoginPage();
 
         assertTrue(loginPage.getLogoImageSource().contains("img/logo-big.png"));
@@ -36,6 +46,15 @@ public class TraditionalTests extends BaseTest {
         verifySocialIcons(loginPage);
     }
 
+    @Test
+    @UseDataProvider("testDataForErrors")
+    public void shouldShowErrorMessageWhenUserNameOrPasswordInvalid(String userName, String password, String errorMessage) {
+        LoginPage loginPage = new LoginPage();
+        loginPage.loginWith(userName, password);
+
+        assertEquals(errorMessage, loginPage.getLoginErrorMessage());
+    }
+
     private void verifySocialIcons(LoginPage loginPage) {
         List<String> expectedSocialIconImageSources =
                 Arrays.asList("img/social-icons/twitter.png", "img/social-icons/facebook.png", "img/social-icons/linkedin.png");
@@ -47,4 +66,14 @@ public class TraditionalTests extends BaseTest {
             assertTrue(actualSocialIconImageSources.get(i).contains(expectedSocialIconImageSources.get(i)));
         }
     }
+
+    @DataProvider()
+    public static Object[][] testDataForErrors() {
+        return new Object[][]{
+                {"", "", "Both Username and Password must be present"},
+                {"someUserName", "", "Password must be present"},
+                {"", "somePassword", "Username must be present"}
+        };
+    }
+
 }

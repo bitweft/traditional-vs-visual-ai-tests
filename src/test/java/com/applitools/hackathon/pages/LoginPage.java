@@ -20,6 +20,7 @@ public class LoginPage extends BasePage {
     private String socialIconsLocator = "//div[@class='buttons-w']//img";
     private String logoLocator = "//div[@class='logo-w']//img";
     private String srcAttribute = "src";
+    private String loginErrorMessageLocator = "alert-warning";
 
     public String getFormTitle() {
         return driver.findElement(By.className(loginFormTitleLocator)).getText();
@@ -71,5 +72,15 @@ public class LoginPage extends BasePage {
 
     public String getLogoImageSource() {
         return driver.findElement(By.xpath(logoLocator)).getAttribute(srcAttribute);
+    }
+
+    public void loginWith(String userName, String password) {
+        driver.findElement(By.id(usernameFieldLocator)).sendKeys(userName);
+        driver.findElement(By.id(passwordFieldLocator)).sendKeys(password);
+        driver.findElement(By.id(loginButtonLocator)).click();
+    }
+
+    public String getLoginErrorMessage() {
+        return driver.findElement(By.className(loginErrorMessageLocator)).getText();
     }
 }
