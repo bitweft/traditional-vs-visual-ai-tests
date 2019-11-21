@@ -1,5 +1,6 @@
 package com.applitools.hackathon;
 
+import com.applitools.hackathon.pages.HomePage;
 import com.applitools.hackathon.pages.LoginPage;
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
@@ -54,6 +55,16 @@ public class TraditionalTests extends BaseTest {
 
         assertEquals(errorMessage, loginPage.getLoginErrorMessage());
     }
+
+    @Test
+    public void shouldLoginToAppWhenCredentialsAreCorrect() {
+        LoginPage loginPage = new LoginPage();
+        HomePage homePage = loginPage.loginWith("someUserName", "somePassword");
+
+        assertEquals("https://demo.applitools.com/hackathonApp.html", driver.getCurrentUrl());
+        assertEquals("Jack Gomez", homePage.getLoggedInUserName());
+    }
+
 
     private void verifySocialIcons(LoginPage loginPage) {
         List<String> expectedSocialIconImageSources =

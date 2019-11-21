@@ -74,10 +74,11 @@ public class LoginPage extends BasePage {
         return driver.findElement(By.xpath(logoLocator)).getAttribute(srcAttribute);
     }
 
-    public void loginWith(String userName, String password) {
+    public HomePage loginWith(String userName, String password) {
         driver.findElement(By.id(usernameFieldLocator)).sendKeys(userName);
         driver.findElement(By.id(passwordFieldLocator)).sendKeys(password);
         driver.findElement(By.id(loginButtonLocator)).click();
+        return new HomePage();
     }
 
     public String getLoginErrorMessage() {
