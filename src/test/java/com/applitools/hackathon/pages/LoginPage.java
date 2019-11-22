@@ -1,9 +1,12 @@
 package com.applitools.hackathon.pages;
 
+import org.apache.http.client.utils.URIBuilder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class LoginPage extends BasePage {
@@ -21,9 +24,18 @@ public class LoginPage extends BasePage {
     private String logoLocator = "//div[@class='logo-w']//img";
     private String srcAttribute = "src";
     private String loginErrorMessageLocator = "alert-warning";
+    private String loginPageUrl = "https://demo.applitools.com/hackathon.html";
 
     public LoginPage() {
-        driver.get("https://demo.applitools.com/hackathon.html");
+        driver.get(loginPageUrl);
+    }
+
+    public LoginPage(Map<String, String> queryParams) throws URISyntaxException {
+        URIBuilder uriBuilder = new URIBuilder(loginPageUrl);
+        for (Map.Entry<String, String> queryParam : queryParams.entrySet()) {
+            uriBuilder.addParameter(queryParam.getKey(), queryParam.getValue());
+        }
+        driver.get(uriBuilder.toString());
     }
 
     public String getFormTitle() {

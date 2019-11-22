@@ -15,6 +15,7 @@ public class HomePage extends BasePage {
     private String dataTag = "td";
     private String imageTag = "img";
     private String srcAttribute = "src";
+    private String flashSaleLocator = "flashSale";
 
     public String getLoggedInUserName() {
         return driver.findElement(By.id(loggedInUserNameLocator)).getText();
@@ -42,4 +43,20 @@ public class HomePage extends BasePage {
         driver.findElement(By.id(compareExpensePageLocator)).click();
         return new CompareExpensesPage();
     }
+
+
+    public boolean isFlashSalePresentForSaleNumber(int saleNumber) {
+        return driver.findElement(By.id(getFlashSaleLocator(saleNumber))).isDisplayed();
+    }
+
+    public String getFlashSaleImageUrlForSaleNumber(int saleNumber) {
+        return driver.findElement(By.id(getFlashSaleLocator(saleNumber)))
+                .findElement(By.tagName(imageTag))
+                .getAttribute(srcAttribute);
+    }
+
+    private String getFlashSaleLocator(int saleNumber) {
+        return saleNumber == 1 ? flashSaleLocator : flashSaleLocator + saleNumber;
+    }
+
 }

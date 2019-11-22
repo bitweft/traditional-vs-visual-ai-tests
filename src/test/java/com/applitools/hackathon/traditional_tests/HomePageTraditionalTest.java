@@ -7,9 +7,11 @@ import com.applitools.hackathon.pages.HomePage;
 import com.applitools.hackathon.pages.LoginPage;
 import org.junit.Test;
 
+import java.net.URISyntaxException;
+import java.util.HashMap;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class HomePageTraditionalTest extends BaseTest {
 
@@ -24,5 +26,23 @@ public class HomePageTraditionalTest extends BaseTest {
         List<TransactionDetail> transactionDetailsAfterSorting = homePage.getRecentTransactionDetails();
 
         assertEquals(initialTransactionDetails, transactionDetailsAfterSorting);
+    }
+
+    @Test
+    public void shouldDisplayAds() throws URISyntaxException {
+        HashMap<String, String> queryParams = new HashMap<>();
+        queryParams.put("showAd", "true");
+
+        HomePage homePage = new LoginPage(queryParams).loginWith("someUserName", "somePassword");
+
+        assertTrue(homePage.isFlashSalePresentForSaleNumber(1));
+        assertTrue(homePage.isFlashSalePresentForSaleNumber(2));
+        assertFalse(homePage.getFlashSaleImageUrlForSaleNumber(1).isEmpty());
+        assertFalse(homePage.getFlashSaleImageUrlForSaleNumber(2).isEmpty());
+
+        /*
+            If the image url is incorrect / doesn't exist, then on UI, the image will not be displayed.
+            But this test will not be able to catch the issue.
+         */
     }
 }
