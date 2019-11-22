@@ -14,6 +14,10 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class HomePageTraditionalTest extends BaseTest {
+    /*
+        If the image urls are incorrect / don't exist, then on UI, the image will not be displayed.
+        But these tests will not be able to catch the issue.
+    */
 
     @Test
     public void shouldAllowSortingTransactionByAmount() {
@@ -39,10 +43,5 @@ public class HomePageTraditionalTest extends BaseTest {
         assertTrue(homePage.isFlashSalePresentForSaleNumber(2));
         assertFalse(homePage.getFlashSaleImageUrlForSaleNumber(1).isEmpty());
         assertFalse(homePage.getFlashSaleImageUrlForSaleNumber(2).isEmpty());
-
-        /*
-            If the image url is incorrect / doesn't exist, then on UI, the image will not be displayed.
-            But this test will not be able to catch the issue.
-         */
     }
 }

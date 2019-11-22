@@ -17,6 +17,10 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(DataProviderRunner.class)
 public class LoginPageTraditionalTest extends BaseTest {
+    /*
+        If certain elements and text are present, but if the alignment is broken,
+        these tests will not catch the alignment issues.
+    */
 
     @Test
     public void shouldDisplayLoginPageInformationCorrectly() {
@@ -59,7 +63,6 @@ public class LoginPageTraditionalTest extends BaseTest {
         assertEquals("Jack Gomez", homePage.getLoggedInUserName());
     }
 
-
     private void verifySocialIcons(LoginPage loginPage) {
         List<String> expectedSocialIconImageSources =
                 Arrays.asList("img/social-icons/twitter.png", "img/social-icons/facebook.png", "img/social-icons/linkedin.png");
@@ -80,5 +83,4 @@ public class LoginPageTraditionalTest extends BaseTest {
                 {"", "somePassword", "Username must be present"}
         };
     }
-
 }
