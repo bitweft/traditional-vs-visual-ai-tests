@@ -11,6 +11,7 @@ public class HomePage extends BasePage {
     private String loggedInUserNameLocator = "logged-user-name";
     private String amountColumnLocator = "amount";
     private String recentTransactionRowLocator = "//table[@id='transactionsTable']/tbody/tr";
+    private String compareExpensePageLocator = "showExpensesChart";
     private String dataTag = "td";
     private String imageTag = "img";
     private String srcAttribute = "src";
@@ -35,5 +36,10 @@ public class HomePage extends BasePage {
             String amount = rowValues.get(4).getText();
             return new TransactionDetail(status, date, icon, description, category, amount);
         }).collect(Collectors.toList());
+    }
+
+    public CompareExpensesPage gotoCompareExpensesPage() {
+        driver.findElement(By.id(compareExpensePageLocator)).click();
+        return new CompareExpensesPage();
     }
 }
