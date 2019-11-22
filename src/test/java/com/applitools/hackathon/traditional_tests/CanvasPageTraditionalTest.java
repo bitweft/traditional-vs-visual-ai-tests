@@ -1,14 +1,13 @@
 package com.applitools.hackathon.traditional_tests;
 
-import com.applitools.hackathon.BaseTest;
-import com.applitools.hackathon.pages.CompareExpensesPage;
-import com.applitools.hackathon.pages.LoginPage;
+import com.applitools.hackathon.traditional_tests.pages.CompareExpensesPage;
+import com.applitools.hackathon.traditional_tests.pages.LoginPage;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 
-public class CanvasPageTraditionalTest extends BaseTest {
+public class CanvasPageTraditionalTest extends TraditionalBaseTest {
     /*
         The chart's internal data is not available in the DOM.
 

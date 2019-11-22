@@ -1,8 +1,7 @@
 package com.applitools.hackathon.traditional_tests;
 
-import com.applitools.hackathon.BaseTest;
-import com.applitools.hackathon.pages.HomePage;
-import com.applitools.hackathon.pages.LoginPage;
+import com.applitools.hackathon.traditional_tests.pages.HomePage;
+import com.applitools.hackathon.traditional_tests.pages.LoginPage;
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import com.tngtech.java.junit.dataprovider.UseDataProvider;
@@ -16,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(DataProviderRunner.class)
-public class LoginPageTraditionalTest extends BaseTest {
+public class LoginPageTraditionalTest extends TraditionalBaseTest {
     /*
         If certain elements and text are present, but if the alignment is broken,
         these tests will not catch the alignment issues.
@@ -59,7 +58,6 @@ public class LoginPageTraditionalTest extends BaseTest {
         LoginPage loginPage = new LoginPage();
         HomePage homePage = loginPage.loginWith("someUserName", "somePassword");
 
-        assertEquals("https://demo.applitools.com/hackathonApp.html", driver.getCurrentUrl());
         assertEquals("Jack Gomez", homePage.getLoggedInUserName());
     }
 

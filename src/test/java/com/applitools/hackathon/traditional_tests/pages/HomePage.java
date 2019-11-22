@@ -1,6 +1,6 @@
-package com.applitools.hackathon.pages;
+package com.applitools.hackathon.traditional_tests.pages;
 
-import com.applitools.hackathon.models.TransactionDetail;
+import com.applitools.hackathon.traditional_tests.models.TransactionDetail;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 

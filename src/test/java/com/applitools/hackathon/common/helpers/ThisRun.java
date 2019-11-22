@@ -1,4 +1,4 @@
-package com.applitools.hackathon.helpers;
+package com.applitools.hackathon.common.helpers;
 
 import java.util.HashMap;
 

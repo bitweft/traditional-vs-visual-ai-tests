@@ -1,4 +1,4 @@
-package com.applitools.hackathon.models;
+package com.applitools.hackathon.traditional_tests.models;
 
 import java.util.Comparator;
 

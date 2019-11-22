@@ -1,10 +1,9 @@
 package com.applitools.hackathon.traditional_tests;
 
-import com.applitools.hackathon.BaseTest;
-import com.applitools.hackathon.models.TransactionAmountComparator;
-import com.applitools.hackathon.models.TransactionDetail;
-import com.applitools.hackathon.pages.HomePage;
-import com.applitools.hackathon.pages.LoginPage;
+import com.applitools.hackathon.traditional_tests.models.TransactionAmountComparator;
+import com.applitools.hackathon.traditional_tests.models.TransactionDetail;
+import com.applitools.hackathon.traditional_tests.pages.HomePage;
+import com.applitools.hackathon.traditional_tests.pages.LoginPage;
 import org.junit.Test;
 
 import java.net.URISyntaxException;
@@ -13,7 +12,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class HomePageTraditionalTest extends BaseTest {
+public class HomePageTraditionalTest extends TraditionalBaseTest {
     /*
         If the image urls are incorrect / don't exist, then on UI, the image will not be displayed.
         But these tests will not be able to catch the issue.

@@ -1,4 +1,4 @@
-package com.applitools.hackathon.pages;
+package com.applitools.hackathon.traditional_tests.pages;
 
 import org.openqa.selenium.By;
 

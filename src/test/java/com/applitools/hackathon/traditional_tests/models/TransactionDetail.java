@@ -1,4 +1,4 @@
-package com.applitools.hackathon.models;
+package com.applitools.hackathon.traditional_tests.models;
 
 public class TransactionDetail {
     private String status;
