@@ -1,5 +1,6 @@
-package com.applitools.hackathon;
+package com.applitools.hackathon.traditional_tests;
 
+import com.applitools.hackathon.BaseTest;
 import com.applitools.hackathon.pages.HomePage;
 import com.applitools.hackathon.pages.LoginPage;
 import com.tngtech.java.junit.dataprovider.DataProvider;
@@ -16,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(DataProviderRunner.class)
-public class TraditionalTests extends BaseTest {
+public class LoginPageTraditionalTest extends BaseTest {
 
     @Before
     public void launchLoginPage() {
