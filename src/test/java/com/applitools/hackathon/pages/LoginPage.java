@@ -22,6 +22,10 @@ public class LoginPage extends BasePage {
     private String srcAttribute = "src";
     private String loginErrorMessageLocator = "alert-warning";
 
+    public LoginPage() {
+        driver.get("https://demo.applitools.com/hackathon.html");
+    }
+
     public String getFormTitle() {
         return driver.findElement(By.className(loginFormTitleLocator)).getText();
     }

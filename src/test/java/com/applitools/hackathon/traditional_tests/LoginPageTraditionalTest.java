@@ -6,7 +6,6 @@ import com.applitools.hackathon.pages.LoginPage;
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import com.tngtech.java.junit.dataprovider.UseDataProvider;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -19,14 +18,8 @@ import static org.junit.Assert.assertTrue;
 @RunWith(DataProviderRunner.class)
 public class LoginPageTraditionalTest extends BaseTest {
 
-    @Before
-    public void launchLoginPage() {
-        driver.get("https://demo.applitools.com/hackathon.html");
-    }
-
     @Test
     public void shouldDisplayLoginPageInformationCorrectly() {
-
         LoginPage loginPage = new LoginPage();
 
         assertTrue(loginPage.getLogoImageSource().contains("img/logo-big.png"));

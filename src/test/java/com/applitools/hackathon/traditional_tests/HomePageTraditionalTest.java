@@ -5,7 +5,6 @@ import com.applitools.hackathon.models.TransactionAmountComparator;
 import com.applitools.hackathon.models.TransactionDetail;
 import com.applitools.hackathon.pages.HomePage;
 import com.applitools.hackathon.pages.LoginPage;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -13,17 +12,11 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class HomePageTraditionalTest extends BaseTest {
-    HomePage homePage;
-
-    @Before
-    public void setup() {
-        super.setup();
-        driver.get("https://demo.applitools.com/hackathon.html");
-        homePage = new LoginPage().loginWith("someUserName", "somePassword");
-    }
 
     @Test
     public void shouldAllowSortingTransactionByAmount() {
+        HomePage homePage = new LoginPage().loginWith("someUserName", "somePassword");
+
         List<TransactionDetail> initialTransactionDetails = homePage.getRecentTransactionDetails();
         initialTransactionDetails.sort(new TransactionAmountComparator());
 
