@@ -1,6 +1,8 @@
 package com.applitools.hackathon.visual_ai_tests;
 
 import com.applitools.eyes.RectangleSize;
+import com.applitools.eyes.TestResultContainer;
+import com.applitools.eyes.TestResultsSummary;
 import com.applitools.eyes.selenium.ClassicRunner;
 import com.applitools.eyes.selenium.Eyes;
 import com.applitools.eyes.selenium.StitchMode;
@@ -12,6 +14,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
+import static org.junit.Assert.assertTrue;
 
 public class VisualAIBaseTest {
     Eyes eyes;
@@ -19,6 +22,7 @@ public class VisualAIBaseTest {
     String appName = "HackathonApp";
     RectangleSize viewportSize = new RectangleSize(800, 800);
     private String applitools_api_key = System.getenv("APPLITOOLS_API_KEY");
+    private ClassicRunner runner;
 
     @Before
     public void setup() {
@@ -29,7 +33,8 @@ public class VisualAIBaseTest {
             throw new RuntimeException("No API Key found");
         }
 
-        eyes = new Eyes(new ClassicRunner());
+        runner = new ClassicRunner();
+        eyes = new Eyes(runner);
         eyes.setApiKey(applitools_api_key);
         eyes.setSaveNewTests(true);
         eyes.setStitchMode(StitchMode.CSS);
@@ -40,5 +45,9 @@ public class VisualAIBaseTest {
     public void tearDown() {
         driver.quit();
         eyes.abortIfNotClosed();
+        TestResultsSummary testSummary = runner.getAllTestResults();
+        for (TestResultContainer testResultContainer : testSummary) {
+            assertTrue(testResultContainer.getTestResults().isPassed());
+        }
     }
 }
