@@ -24,7 +24,7 @@ public class LoginPage extends BasePage {
     private String logoLocator = "//div[@class='logo-w']//img";
     private String srcAttribute = "src";
     private String loginErrorMessageLocator = "alert-warning";
-    private String loginPageUrl = "https://demo.applitools.com/hackathon.html";
+    private String loginPageUrl = "https://demo.applitools.com/hackathonV2.html";
 
     public LoginPage() {
         driver.get(loginPageUrl);

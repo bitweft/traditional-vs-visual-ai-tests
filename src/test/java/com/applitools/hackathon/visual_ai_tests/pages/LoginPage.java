@@ -7,7 +7,7 @@ import java.net.URISyntaxException;
 import java.util.Map;
 
 public class LoginPage extends BasePage {
-    private String loginPageUrl = "https://demo.applitools.com/hackathon.html";
+    private String loginPageUrl = "https://demo.applitools.com/hackathonV2.html";
     private String usernameFieldLocator = "username";
     private String passwordFieldLocator = "password";
     private String loginButtonLocator = "log-in";
