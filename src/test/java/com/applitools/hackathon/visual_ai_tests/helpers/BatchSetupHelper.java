@@ -7,7 +7,7 @@ public class BatchSetupHelper {
     private static BatchInfo batch;
 
     private BatchSetupHelper() {
-        String batchInfoName = "Hackathon";
+        String batchInfoName = "FunctionalAutomation";
         batch = new BatchInfo(batchInfoName);
     }
 
