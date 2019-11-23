@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(DataProviderRunner.class)
-public class LoginPageVisualAiTests extends VisualAIBaseTest {
+public class LoginPageVisualAiTest extends VisualAIBaseTest {
 
     @Test
     public void shouldDisplayLoginPageInformationCorrectly() {

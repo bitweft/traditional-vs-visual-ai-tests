@@ -5,6 +5,7 @@ import com.applitools.eyes.selenium.ClassicRunner;
 import com.applitools.eyes.selenium.Eyes;
 import com.applitools.hackathon.common.helpers.ThisRun;
 import com.applitools.hackathon.visual_ai_tests.helpers.BatchSetupHelper;
+import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -31,5 +32,10 @@ public class VisualAIBaseTest {
         eyes.setApiKey(applitools_api_key);
         eyes.setBatch(BatchSetupHelper.getInstance().getBatchInfo());
         eyes.open(driver, appName, testName, viewportSize);
+    }
+
+    @After
+    public void tearDown() {
+        driver.quit();
     }
 }

@@ -1,6 +1,10 @@
 package com.applitools.hackathon.visual_ai_tests.pages;
 
+import org.apache.http.client.utils.URIBuilder;
 import org.openqa.selenium.By;
+
+import java.net.URISyntaxException;
+import java.util.Map;
 
 public class LoginPage extends BasePage {
     private String loginPageUrl = "https://demo.applitools.com/hackathon.html";
@@ -10,6 +14,14 @@ public class LoginPage extends BasePage {
 
     public LoginPage() {
         driver.get(loginPageUrl);
+    }
+
+    public LoginPage(Map<String, String> queryParams) throws URISyntaxException {
+        URIBuilder uriBuilder = new URIBuilder(loginPageUrl);
+        for (Map.Entry<String, String> queryParam : queryParams.entrySet()) {
+            uriBuilder.addParameter(queryParam.getKey(), queryParam.getValue());
+        }
+        driver.get(uriBuilder.toString());
     }
 
     public HomePage loginWith(String userName, String password) {
