@@ -10,6 +10,8 @@ public class HomePageVisualAiTest extends VisualAIBaseTest {
 
     @Test
     public void shouldAllowSortingTransactionByAmount() {
+        eyes.open(driver, appName, "shouldAllowSortingTransactionByAmount", viewportSize);
+
         new LoginPage().loginWith("someUserName", "somePassword").sortByAmount();
 
         eyes.setForceFullPageScreenshot(true);
@@ -21,6 +23,8 @@ public class HomePageVisualAiTest extends VisualAIBaseTest {
     public void shouldDisplayAds() throws URISyntaxException {
         HashMap<String, String> queryParams = new HashMap<>();
         queryParams.put("showAd", "true");
+
+        eyes.open(driver, appName, "shouldDisplayAds", viewportSize);
 
         new LoginPage(queryParams).loginWith("someUserName", "somePassword");
 

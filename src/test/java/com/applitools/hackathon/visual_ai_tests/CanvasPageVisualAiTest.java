@@ -8,6 +8,8 @@ public class CanvasPageVisualAiTest extends VisualAIBaseTest {
 
     @Test
     public void shouldShowExpenseComparisionChart() {
+        eyes.open(driver, appName, "shouldShowExpenseComparisionChart", viewportSize);
+
         CompareExpensesPage compareExpensesPage = new LoginPage()
                 .loginWith("someUserName", "somePassword")
                 .gotoCompareExpensesPage();
@@ -17,5 +19,6 @@ public class CanvasPageVisualAiTest extends VisualAIBaseTest {
         compareExpensesPage.addYearData();
 
         eyes.checkWindow("CompareExpenseChartAfterAddingYear");
+        eyes.closeAsync();
     }
 }
